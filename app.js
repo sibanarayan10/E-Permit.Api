@@ -19,7 +19,7 @@ const logger = require("./utils/logger");
 dotenv.config();
 
 const app = express();
-
+app.set("trust proxy", 1);
 /* =========================================================
    CORS (MUST BE FIRST – DO NOT THROW ERRORS)
 ========================================================= */
@@ -45,7 +45,7 @@ const corsOptions = {
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
   exposedHeaders: ["Set-Cookie"],
-  optionsSuccessStatus: 200
+  optionsSuccessStatus: 200,
 };
 
 app.use(cors(corsOptions));
@@ -57,7 +57,7 @@ app.options("*", cors(corsOptions));
 app.use(
   helmet({
     crossOriginResourcePolicy: { policy: "cross-origin" },
-    crossOriginOpenerPolicy: { policy: "same-origin-allow-popups" }
+    crossOriginOpenerPolicy: { policy: "same-origin-allow-popups" },
   })
 );
 
@@ -72,7 +72,7 @@ app.use(
   "/api",
   rateLimit({
     windowMs: 15 * 60 * 1000,
-    max: 1000
+    max: 1000,
   })
 );
 
@@ -115,16 +115,14 @@ app.get("/api/health", (req, res) => {
     uptime: process.uptime(),
     services: {
       mongodb:
-        mongoose.connection.readyState === 1
-          ? "connected"
-          : "disconnected",
+        mongoose.connection.readyState === 1 ? "connected" : "disconnected",
       cloudinary: cloudinary
         ? {
-          configured: true,
-          cloudName: cloudinary.config().cloud_name
-        }
-        : { configured: false }
-    }
+            configured: true,
+            cloudName: cloudinary.config().cloud_name,
+          }
+        : { configured: false },
+    },
   });
 });
 
@@ -134,7 +132,7 @@ app.get("/api/health", (req, res) => {
 app.use("/api/*", (req, res) => {
   res.status(404).json({
     success: false,
-    message: `Route ${req.originalUrl} not found`
+    message: `Route ${req.originalUrl} not found`,
   });
 });
 
