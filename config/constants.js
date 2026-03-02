@@ -1,7 +1,7 @@
 const ROLES = {
   ADMIN: "ADMIN",
   SUBADMIN: "SUBADMIN",
-  CLIENT: "CLIENT"
+  CLIENT: "CLIENT",
 };
 
 const PERMIT_STATUS = {
@@ -30,13 +30,13 @@ const NOTIFICATION_TYPES = {
   CLOSURE_INITIATED: "CLOSURE_INITIATED",
   CLOSURE_APPROVED_EXECUTION: "CLOSURE_APPROVED_EXECUTION",
   CLOSURE_APPROVED_ISSUER: "CLOSURE_APPROVED_ISSUER",
-  PERMIT_CLOSED: "PERMIT_CLOSED"
+  PERMIT_CLOSED: "PERMIT_CLOSED",
 };
 
 const WORKFLOW_STAGES = {
   INITIATOR: "Initiator",
   EXECUTION: "Execution",
-  ISSUER: "Issuer"
+  ISSUER: "Issuer",
 };
 
 const COOKIE_CONFIG = {
@@ -47,15 +47,14 @@ const COOKIE_CONFIG = {
     sameSite: "none",
     signed: true,
     maxAge: 7 * 24 * 60 * 60 * 1000,
-    domain: process.env.NODE_ENV === "production" ? ".vercel.app" : undefined,
     path: "/",
-  }
+  },
 };
 
 const PAGINATION = {
   DEFAULT_PAGE: 1,
   DEFAULT_LIMIT: 10,
-  MAX_LIMIT: 100
+  MAX_LIMIT: 100,
 };
 
 const RESPONSE_MESSAGES = {
@@ -78,10 +77,10 @@ const RESPONSE_MESSAGES = {
   VALIDATION_ERROR: "Validation failed",
   DUPLICATE_ERROR: "Resource already exists",
   NOT_FOUND: "Resource not found",
-  FORBIDDEN: "Access forbidden"
+  FORBIDDEN: "Access forbidden",
 };
 const LOCATIONS = {
-  PLANT_A: "Bhilai"
+  PLANT_A: "Bhilai",
 };
 
 const SUB_LOCATIONS = {
@@ -114,15 +113,15 @@ const SUB_LOCATIONS = {
     "DIC-26-TOWNSERVICES-CnIT-HRD",
     "DIC-27-PROJECTS-CONSTRUCTION",
     "DIC-28-FINANCE-ACCOUNTS-MM",
-    "DIC-29-FIRE-SAFETY-ENV"
-  ]
+    "DIC-29-FIRE-SAFETY-ENV",
+  ],
 };
 
 // Auto-numbering configuration
 const PERMIT_NUMBER_CONFIG = {
   PREFIX: "PT",
   SEPARATOR: "-",
-  YEAR_LENGTH: 4
+  YEAR_LENGTH: 4,
 };
 
 module.exports = {
@@ -135,5 +134,5 @@ module.exports = {
   RESPONSE_MESSAGES,
   PERMIT_NUMBER_CONFIG,
   LOCATIONS,
-  SUB_LOCATIONS
+  SUB_LOCATIONS,
 };
