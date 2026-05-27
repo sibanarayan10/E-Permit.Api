@@ -176,7 +176,8 @@ exports.userLogin = async (req, res) => {
     logger.error("User login error:", error);
     return res.status(500).json({
       success: false,
-      message: RESPONSE_MESSAGES.INTERNAL_SERVER_ERROR
+      message: `${RESPONSE_MESSAGES.INTERNAL_SERVER_ERROR}`,
+      errorMessage: `${error}.   ${error.message}`
     });
   }
 };
